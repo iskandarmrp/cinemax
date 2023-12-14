@@ -23,12 +23,9 @@
                 <div class="mb-3">
                     <label for="showTime" class="form-label">Show Time</label>
                     <select name="showTime" class="form-control" id="showTime">
-                        <option value="12.20">12.20</option>
-                        <option value="13.30">13.30</option>
-                        <option value="17.70">17.70</option>
-                        <option value="12.50">12.50</option>
-                        <option value="01.01">01.01</option>
-                        <option value="04.50">04.50</option>
+                        <?php foreach ($showtime as $s) : ?>
+                            <option value=<?= $s['showTimeId']; ?>><?= $s['time']; ?></option>
+                        <?php endforeach; ?>
                     </select>
                 </div>
                 <div class="mb-3">

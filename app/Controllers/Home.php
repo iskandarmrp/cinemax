@@ -2,26 +2,28 @@
 
 namespace App\Controllers;
 
-use App\Models\MovieModel;
 use App\Models\PaymentModel;
 use App\Models\TicketModel;
 
 class Home extends BaseController
 {
-    protected $movieModel;
     protected $paymentModel;
     protected $ticketModel;
     protected $movieInfo;
+    protected $showTimeInfo;
 
     public function __construct()
     {
-        $this->movieModel = new MovieModel();
         $this->paymentModel = new PaymentModel();
         $this->ticketModel = new TicketModel();
         $url = 'http://localhost:8081/movieAPI';
         $jsonString = file_get_contents($url);
         $jsonData = json_decode($jsonString, true);
         $this->movieInfo = $jsonData['movies'];
+        $url2 = 'http://localhost:8081/showTimeAPI';
+        $jsonString2 = file_get_contents($url2);
+        $jsonData2 = json_decode($jsonString2, true);
+        $this->showTimeInfo = $jsonData2['showtime'];
     }
 
     public function index()
@@ -42,7 +44,13 @@ class Home extends BaseController
                 break;
             }
         }
-        $data = ['title' => 'Detail Movie', 'movie' => $movieDetail];
+        $showTimeDetail = [];
+        foreach ($this->showTimeInfo as $showTime) {
+            if ($showTime['movieId'] == $movieDetail['movieId']) {
+                array_push($showTimeDetail, $showTime);
+            }
+        }
+        $data = ['title' => 'Detail Movie', 'movie' => $movieDetail, 'showtime' => $showTimeDetail];
         return view('layout/header') . view('movie_detail', $data) . view('layout/footer');
     }
 }

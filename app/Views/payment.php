@@ -13,7 +13,7 @@
                             <p class="card-text"><?= $movie['synopsis']; ?></p>
                             <p class="card-text"><?= $movie['genre']; ?></p>
                             <p class="card-text"><small class="text-body-secondary"><?= $movie['durationInMins']; ?></small></p>
-                            <p class="card-text"><?= $showTime; ?></p>
+                            <p class="card-text"><?= $showTime['time']; ?></p>
                             <p class="card-text"><?= implode(', ', $seats); ?></p>
                         </div>
                     </div>
@@ -33,7 +33,7 @@
                     </select>
                 </div>
                 <input type="hidden" name="title" value="<?= $movie['title']; ?>">
-                <input type="hidden" name="showTime" value="<?= $showTime; ?>">
+                <input type="hidden" name="showTime" value="<?= $showTime['showTimeId']; ?>">
                 <input type="hidden" name="seats" value="<?= implode(', ', $seats); ?>">
 
                 <button type="submit" class="btn btn-primary">Purchase</button>
