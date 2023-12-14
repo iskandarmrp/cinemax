@@ -16,8 +16,8 @@
                     <tbody>
                         <tr>
                             <?php foreach ($movie as $m) : ?>
-                                <th scope="row">1</th>
-                                <td>Ini cover</td>
+                                <th scope="row"><?= $m['movieId']; ?></th>
+                                <td><?= $m['poster']; ?></td>
                                 <td><?= $m['title']; ?></td>
                                 <td><?= $m['synopsis']; ?></td>
                                 <td><a href="/detail/<?= $m['title']; ?>" class="btn btn-success">Buy</a></td>
@@ -28,7 +28,5 @@
             </div>
         </div>
     </div>
-
-    <a href="/ticket/create" class="btn btn-primary mb-3">Purchase</a>
     <h1>Hello World</h1>
 </body>

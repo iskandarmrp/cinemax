@@ -22,7 +22,7 @@
                 <input type="hidden" name="title" value="<?= $movie['title']; ?>">
                 <div class="mb-3">
                     <label for="showTime" class="form-label">Show Time</label>
-                    <select name="showTime" class="form-control" id="showTime" multiple>
+                    <select name="showTime" class="form-control" id="showTime">
                         <option value="12.20">12.20</option>
                         <option value="13.30">13.30</option>
                         <option value="17.70">17.70</option>

@@ -13,12 +13,17 @@ class PaymentController extends BaseController
     protected $paymentModel;
     protected $movieModel;
     protected $ticketModel;
+    protected $movieInfo;
 
     public function __construct()
     {
         $this->paymentModel = new PaymentModel();
         $this->movieModel = new MovieModel();
         $this->ticketModel = new TicketModel();
+        $url = 'http://localhost:8081/movieAPI';
+        $jsonString = file_get_contents($url);
+        $jsonData = json_decode($jsonString, true);
+        $this->movieInfo = $jsonData['movies'];
     }
 
     public function index()
@@ -26,8 +31,15 @@ class PaymentController extends BaseController
         if (session()->get('num_user') == '') {
             return redirect()->to('/login');
         }
-        $movie = $this->movieModel->where(['title' => $this->request->getVar('title')])->first();
-        $data = ['title' => 'payment', 'movie' => $movie, 'showTime' => $this->request->getVar('showTime'), 'seats' => $this->request->getVar('seats[]')];
+        // $movie = $this->movieModel->where(['title' => $this->request->getVar('title')])->first();
+        $movieDetail = null;
+        foreach ($this->movieInfo as $movie) {
+            if ($movie['title'] == $this->request->getVar('title')) {
+                $movieDetail = $movie;
+                break;
+            }
+        }
+        $data = ['title' => 'payment', 'movie' => $movieDetail, 'showTime' => $this->request->getVar('showTime'), 'seats' => $this->request->getVar('seats[]')];
         return view('layout/header') . view('payment', $data) . view('layout/footer');
     }
 

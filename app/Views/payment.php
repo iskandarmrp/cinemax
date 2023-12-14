@@ -23,7 +23,7 @@
                 <?= csrf_field(); ?>
                 <div class="mb-3">
                     <label for="paymentMethod" class="form-label">Payment Method</label>
-                    <select name="paymentMethod" class="form-control" id="paymentMethod" multiple>
+                    <select name="paymentMethod" class="form-control" id="paymentMethod">
                         <option value="gopay">GoPay</option>
                         <option value="ovo">OVO</option>
                         <option value="bca">BCA</option>
