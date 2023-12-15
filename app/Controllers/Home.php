@@ -28,15 +28,18 @@ class Home extends BaseController
 
     public function index()
     {
-        if (session()->get('num_user') == '') {
+        if (session()->get('email') == '') {
             return redirect()->to('/login');
         }
-        $data = ['title' => 'Daftar Movie', 'movie' => $this->movieInfo];
+        $data = ['title' => 'Daftar Movie', 'movie' => $this->movieInfo, 'email' => session()->get('email')];
         return view('layout/header') . view('home', $data) . view('layout/footer');
     }
 
-    public function detail($title)
+    public function detail($title, $email)
     {
+        if ($email == '') {
+            return redirect()->to('/login');
+        }
         $movieDetail = null;
         foreach ($this->movieInfo as $movie) {
             if ($movie['title'] == $title) {
@@ -50,7 +53,7 @@ class Home extends BaseController
                 array_push($showTimeDetail, $showTime);
             }
         }
-        $data = ['title' => 'Detail Movie', 'movie' => $movieDetail, 'showtime' => $showTimeDetail];
+        $data = ['title' => 'Detail Movie', 'movie' => $movieDetail, 'showtime' => $showTimeDetail, 'email' => $email];
         return view('layout/header') . view('movie_detail', $data) . view('layout/footer');
     }
 }

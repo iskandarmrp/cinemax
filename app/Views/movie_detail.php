@@ -20,6 +20,7 @@
             <form action="/payment" method="post">
                 <?= csrf_field(); ?>
                 <input type="hidden" name="title" value="<?= $movie['title']; ?>">
+                <input type="hidden" name="email" value="<?= $email; ?>">
                 <div class="mb-3">
                     <label for="showTime" class="form-label">Show Time</label>
                     <select name="showTime" class="form-control" id="showTime">

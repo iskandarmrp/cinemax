@@ -30,7 +30,7 @@ class PaymentController extends BaseController
 
     public function index()
     {
-        if (session()->get('num_user') == '') {
+        if ($this->request->getVar('email') == '') {
             return redirect()->to('/login');
         }
         // $movie = $this->movieModel->where(['title' => $this->request->getVar('title')])->first();
@@ -48,12 +48,15 @@ class PaymentController extends BaseController
                 break;
             }
         }
-        $data = ['title' => 'payment', 'movie' => $movieDetail, 'showTime' => $showTimeDetail, 'seats' => $this->request->getVar('seats[]')];
+        $data = ['title' => 'payment', 'movie' => $movieDetail, 'showTime' => $showTimeDetail, 'seats' => $this->request->getVar('seats[]'), 'email' => $this->request->getVar('email')];
         return view('layout/header') . view('payment', $data) . view('layout/footer');
     }
 
     public function purchase()
     {
+        if ($this->request->getVar('email') == '') {
+            return redirect()->to('/login');
+        }
         $showTimeDetail = null;
         foreach ($this->showTimeInfo as $showTime) {
             if ($showTime['showTimeId'] == $this->request->getVar('showTime')) {
@@ -69,7 +72,7 @@ class PaymentController extends BaseController
 
         $this->paymentModel->insert([
             'paymentDate' => date('Y-m-d'),
-            'email' => 'emails',
+            'email' => $this->request->getVar('email'),
             'totalPrice' => $totalPrice,
             'paymentMethod' => $this->request->getVar('paymentMethod')
         ]);
@@ -78,6 +81,7 @@ class PaymentController extends BaseController
             'title' => $this->request->getVar('title'),
             'seats' => explode(', ', $this->request->getVar('seats')),
             'showTime' => $this->request->getVar('showTime'),
+            'paymentId' => $this->paymentModel->insertID(),
         ]);
     }
 }

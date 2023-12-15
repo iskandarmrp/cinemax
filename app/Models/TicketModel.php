@@ -8,7 +8,7 @@ class TicketModel extends Model
 {
     protected $table = 'ticket';
     protected $primaryKey = 'ticketId';
-    protected $allowedFields = ['movieId', 'movieName', 'date', 'time', 'seats', 'price'];
+    protected $allowedFields = ['movieId', 'movieName', 'date', 'time', 'seats', 'price', 'paymentId'];
 
     public function getDataTicket()
     {

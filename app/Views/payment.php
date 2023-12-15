@@ -32,6 +32,7 @@
                         <option value="bri">BRI</option>
                     </select>
                 </div>
+                <input type="hidden" name="email" value="<?= $email; ?>">
                 <input type="hidden" name="title" value="<?= $movie['title']; ?>">
                 <input type="hidden" name="showTime" value="<?= $showTime['showTimeId']; ?>">
                 <input type="hidden" name="seats" value="<?= implode(', ', $seats); ?>">

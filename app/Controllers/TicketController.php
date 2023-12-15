@@ -57,7 +57,8 @@ class TicketController extends BaseController
                 'date' => date('Y-m-d'),
                 'time' => $showTimeDetail['time'],
                 'seats' => $seat,
-                'price' => $showTimeDetail['price']
+                'price' => $showTimeDetail['price'],
+                'paymentId' => $data['paymentId'],
             ]);
         }
 

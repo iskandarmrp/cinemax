@@ -39,6 +39,10 @@ class Ticket extends Migration
                 'type' => 'DECIMAL',
                 'constraint' => '10,2',
             ],
+            'paymentId' => [
+                'type' => 'INT',
+                'constraint' => 11,
+            ]
         ]);
         $this->forge->addKey('ticketId', true);
         $this->forge->createTable('ticket');

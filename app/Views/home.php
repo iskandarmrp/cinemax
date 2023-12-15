@@ -14,19 +14,21 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <?php foreach ($movie as $m) : ?>
+                        <?php foreach ($movie as $m) : ?>
+                            <tr>
                                 <th scope="row"><?= $m['movieId']; ?></th>
                                 <td><?= $m['poster']; ?></td>
                                 <td><?= $m['title']; ?></td>
                                 <td><?= $m['synopsis']; ?></td>
-                                <td><a href="/detail/<?= $m['title']; ?>" class="btn btn-success">Buy</a></td>
-                            <?php endforeach; ?>
-                        </tr>
+                                <td><a href="/detail/<?= $m['title']; ?>/<?= $email; ?>" class="btn btn-success">Buy</a></td>
+                            </tr>
+                        <?php endforeach; ?>
+
                     </tbody>
                 </table>
             </div>
         </div>
     </div>
+    <a href="/purchases" class="btn btn-success">Purchases</a>
     <h1>Hello World</h1>
 </body>

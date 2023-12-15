@@ -15,7 +15,8 @@ class TicketSeeder extends Seeder
                 'date' => date('Y-m-d'),
                 'time' => '17.20',
                 'seats' => 'A1',
-                'price' => 12000
+                'price' => 12000,
+                'paymentId' => 1,
             ],
             [
                 'movieId' => 2,
@@ -23,7 +24,8 @@ class TicketSeeder extends Seeder
                 'date' => date('Y-m-d'),
                 'time' => '17.20',
                 'seats' => 'A2',
-                'price' => 145000
+                'price' => 145000,
+                'paymentId' => 2,
             ],
             [
                 'movieId' => 1,
@@ -31,7 +33,8 @@ class TicketSeeder extends Seeder
                 'date' => date('Y-m-d'),
                 'time' => '17.20',
                 'seats' => 'A3',
-                'price' => 15000
+                'price' => 15000,
+                'paymentId' => 3,
             ],
         ];
 
