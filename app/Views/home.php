@@ -1,6 +1,6 @@
 <div class="w-full bg-white py-7 pl-[24vw] pr-[4vw] flex flex-col">
     <h1 class="text-black text-[30px] font-medium">Now Playing</h1>
-    <div class="w-full bg-transparent flex flex-wrap gap-16 mt-3">
+    <div class="w-full bg-transparent flex flex-wrap gap-x-16 gap-y-10 mt-3">
         <?php foreach ($movie as $m) : ?>
             <a href="/detail/<?= $m['title']; ?>/<?= $email; ?>" class="w-[26%] h-[49vh] flex flex-col items-center relative">
                 <div class="w-full h-[86%] relative rounded-[15px] overflow-hidden">

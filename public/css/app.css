@@ -708,6 +708,13 @@ video {
 .gap-16 {
   gap: 4rem;
 }
+.gap-x-16 {
+  -moz-column-gap: 4rem;
+       column-gap: 4rem;
+}
+.gap-y-10 {
+  row-gap: 2.5rem;
+}
 .overflow-hidden {
   overflow: hidden;
 }
