@@ -49,7 +49,7 @@ class PaymentController extends BaseController
             }
         }
         $data = ['title' => 'payment', 'movie' => $movieDetail, 'showTime' => $showTimeDetail, 'seats' => $this->request->getVar('seats[]'), 'email' => $this->request->getVar('email')];
-        return view('layout/header') . view('payment', $data) . view('layout/footer');
+        return view('layout/header', $data) . view('payment', $data) . view('layout/footer');
     }
 
     public function purchase()
@@ -82,6 +82,7 @@ class PaymentController extends BaseController
             'seats' => explode(', ', $this->request->getVar('seats')),
             'showTime' => $this->request->getVar('showTime'),
             'paymentId' => $this->paymentModel->insertID(),
+            'email' => $this->request->getVar('email'),
         ]);
     }
 }

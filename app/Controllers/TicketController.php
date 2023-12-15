@@ -63,7 +63,7 @@ class TicketController extends BaseController
         }
 
         session()->setFlashdata('pesan', 'Ticket berhasil dipesan');
-
-        return redirect()->to('/');
+        $email = '/' . $data['email'];
+        return redirect()->to($email);
     }
 }

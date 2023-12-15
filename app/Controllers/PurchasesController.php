@@ -28,21 +28,18 @@ class PurchasesController extends BaseController
         $this->showTimeInfo = $jsonData2['showtime'];
     }
 
-    public function index()
+    public function index($email)
     {
-        if (session()->get('num_user') == '') {
-            return redirect()->to('/login');
-        }
-        $payment = $this->paymentModel->getWhere(['email' => 'jamesanderson@gmail.com'])->getResultArray();
+        $payment = $this->paymentModel->getWhere(['email' => $email])->getResultArray();
 
-        $data = ['title' => 'purchases', 'payment' => $payment];
-        return view('layout/header') . view('purchases', $data) . view('layout/footer');
+        $data = ['title' => 'purchases', 'payment' => $payment, 'email' => $email];
+        return view('layout/header', $data) . view('purchases', $data) . view('layout/footer');
     }
 
-    public function detail($id)
+    public function detail($email, $id)
     {
         $ticket = $this->ticketModel->getWhere(['paymentId' => $id])->getResultArray();
-        $data = ['title' => 'Detail Movie', 'ticket' => $ticket];
-        return view('layout/header') . view('purchase_detail', $data) . view('layout/footer');
+        $data = ['title' => 'Detail Movie', 'ticket' => $ticket, 'email' => $email];
+        return view('layout/header', $data) . view('purchase_detail', $data) . view('layout/footer');
     }
 }

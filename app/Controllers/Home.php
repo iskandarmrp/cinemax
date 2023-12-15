@@ -26,13 +26,13 @@ class Home extends BaseController
         $this->showTimeInfo = $jsonData2['showtime'];
     }
 
-    public function index()
+    public function index($email)
     {
-        if (session()->get('email') == '') {
+        if ($email == '') {
             return redirect()->to('/login');
         }
-        $data = ['title' => 'Daftar Movie', 'movie' => $this->movieInfo, 'email' => session()->get('email')];
-        return view('layout/header') . view('home', $data) . view('layout/footer');
+        $data = ['title' => 'Daftar Movie', 'movie' => $this->movieInfo, 'email' => $email];
+        return view('layout/header', $data) . view('home', $data) . view('layout/footer');
     }
 
     public function detail($title, $email)
@@ -54,6 +54,6 @@ class Home extends BaseController
             }
         }
         $data = ['title' => 'Detail Movie', 'movie' => $movieDetail, 'showtime' => $showTimeDetail, 'email' => $email];
-        return view('layout/header') . view('movie_detail', $data) . view('layout/footer');
+        return view('layout/header', $data) . view('movie_detail', $data) . view('layout/footer');
     }
 }

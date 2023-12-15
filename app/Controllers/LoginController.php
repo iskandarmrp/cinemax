@@ -18,7 +18,8 @@ class LoginController extends BaseController
         $cek = $model->getDataUsers($email, $password);
         if ($cek == 1) {
             session()->set('email', $email);
-            return redirect()->to('/');
+            $email = '/' . $email;
+            return redirect()->to($email);
         } else {
             return redirect()->to('/login');
         }
