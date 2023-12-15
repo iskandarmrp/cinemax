@@ -8,7 +8,7 @@ class PaymentModel extends Model
 {
     protected $table = 'payment';
     protected $primaryKey = 'paymentId';
-    protected $allowedFields = ['paymentDate', 'email', 'totalPrice', 'paymentMethod'];
+    protected $allowedFields = ['paymentDate', 'email', 'totalPrice', 'paymentMethod', 'movieName', 'showtime', 'seats'];
 
     public function getDataPayment()
     {

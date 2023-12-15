@@ -31,6 +31,17 @@ class Payment extends Migration
                 'type' => 'VARCHAR',
                 'constraint' => '255',
             ],
+            'movieName' => [
+                'type' => 'VARCHAR',
+                'constraint' => '255',
+            ],
+            'showtime' => [
+                'type' => 'DATETIME',
+                null => true,
+            ],
+            'seats' => [
+                'type' => 'JSON',
+            ]
         ]);
         $this->forge->addKey('paymentId', true);
         $this->forge->createTable('payment');

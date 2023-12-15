@@ -6,7 +6,7 @@ use CodeIgniter\Router\RouteCollection;
  * @var RouteCollection $routes
  */
 $routes->get('/', 'LoginController::login_action');
-$routes->get('/movieAPI/(:any)/(:any)', 'MovieAPI::index/$1/$2');
+$routes->get('/paymentAPI/(:any)/(:any)', 'PaymentAPI::index/$1/$2');
 $routes->get('/ticketAPI/(:any)/(:any)', 'TicketAPI::index/$1/$2');
 $routes->get('/login', 'LoginController::index');
 $routes->get('/logout', 'LoginController::logout');

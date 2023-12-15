@@ -12,7 +12,7 @@ class PaymentController extends BaseController
     protected $paymentModel;
     protected $ticketModel;
     protected $movieInfo;
-    protected $showTimeInfo;
+    protected $scheduleInfo;
 
     public function __construct()
     {
@@ -21,11 +21,11 @@ class PaymentController extends BaseController
         $url = 'http://localhost:8081/movieAPI';
         $jsonString = file_get_contents($url);
         $jsonData = json_decode($jsonString, true);
-        $this->movieInfo = $jsonData['movies'];
-        $url2 = 'http://localhost:8081/showTimeAPI';
+        $this->movieInfo = $jsonData['movie'];
+        $url2 = 'http://localhost:8081/scheduleAPI';
         $jsonString2 = file_get_contents($url2);
         $jsonData2 = json_decode($jsonString2, true);
-        $this->showTimeInfo = $jsonData2['showtime'];
+        $this->scheduleInfo = $jsonData2['schedule'];
     }
 
     public function index()
@@ -42,9 +42,9 @@ class PaymentController extends BaseController
             }
         }
         $showTimeDetail = null;
-        foreach ($this->showTimeInfo as $showTime) {
-            if ($showTime['showTimeId'] == $this->request->getVar('showTime')) {
-                $showTimeDetail = $showTime;
+        foreach ($this->scheduleInfo as $schedule) {
+            if ($schedule['scheduleID'] == $this->request->getVar('showTime')) {
+                $showTimeDetail = $schedule;
                 break;
             }
         }
@@ -57,10 +57,17 @@ class PaymentController extends BaseController
         if ($this->request->getVar('email') == '') {
             return redirect()->to('/login');
         }
+        $movieName = '';
         $showTimeDetail = null;
-        foreach ($this->showTimeInfo as $showTime) {
-            if ($showTime['showTimeId'] == $this->request->getVar('showTime')) {
+        foreach ($this->scheduleInfo as $showTime) {
+            if ($showTime['scheduleID'] == $this->request->getVar('showTime')) {
                 $showTimeDetail = $showTime;
+                break;
+            }
+        }
+        foreach ($this->movieInfo as $m) {
+            if ($m['movieID'] == $showTimeDetail['movieID']) {
+                $movieName = $m['title'];
                 break;
             }
         }
@@ -74,7 +81,10 @@ class PaymentController extends BaseController
             'paymentDate' => date('Y-m-d'),
             'email' => $this->request->getVar('email'),
             'totalPrice' => $totalPrice,
-            'paymentMethod' => $this->request->getVar('paymentMethod')
+            'paymentMethod' => $this->request->getVar('paymentMethod'),
+            'movieName' => $movieName,
+            'showtime' => $showTimeDetail['showtime'],
+            'seats' => json_encode(explode(', ', $this->request->getVar('seats'))),
         ]);
 
         return redirect()->to(base_url('/ticket/create'))->with('data', [

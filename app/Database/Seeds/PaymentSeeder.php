@@ -13,19 +13,28 @@ class PaymentSeeder extends Seeder
                 'paymentDate' => date('Y-m-d'),
                 'email'    => 'darth@theempire.com',
                 'totalPrice' => 120000,
-                'paymentMethod' => 'ovo'
+                'paymentMethod' => 'ovo',
+                'movieName' => 'The Nun',
+                'showtime' => date('Y-m-d'),
+                'seats' => json_encode(['A1', 'A2', 'A3']),
             ],
             [
                 'paymentDate' => date('Y-m-d'),
                 'email'    => 'oke@gmail.com',
                 'totalPrice' => 17000,
-                'paymentMethod' => 'gopay'
+                'paymentMethod' => 'gopay',
+                'movieName' => 'The Nun',
+                'showtime' => date('Y-m-d'),
+                'seats' => json_encode(['A1', 'A2', 'A3']),
             ],
             [
                 'paymentDate' => date('Y-m-d'),
                 'email'    => 'jamesanderson@gmail.com',
                 'totalPrice' => 90000,
-                'paymentMethod' => 'DANA'
+                'paymentMethod' => 'DANA',
+                'movieName' => 'The Nun',
+                'showtime' => date('Y-m-d'),
+                'seats' => json_encode(['A1', 'A2', 'A3']),
             ],
 
         ];

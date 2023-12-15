@@ -10,7 +10,7 @@ class TicketController extends BaseController
 {
     protected $ticketModel;
     protected $movieInfo;
-    protected $showTimeInfo;
+    protected $scheduleInfo;
 
     public function __construct()
     {
@@ -18,11 +18,11 @@ class TicketController extends BaseController
         $url = 'http://localhost:8081/movieAPI';
         $jsonString = file_get_contents($url);
         $jsonData = json_decode($jsonString, true);
-        $this->movieInfo = $jsonData['movies'];
-        $url2 = 'http://localhost:8081/showTimeAPI';
+        $this->movieInfo = $jsonData['movie'];
+        $url2 = 'http://localhost:8081/scheduleAPI';
         $jsonString2 = file_get_contents($url2);
         $jsonData2 = json_decode($jsonString2, true);
-        $this->showTimeInfo = $jsonData2['showtime'];
+        $this->scheduleInfo = $jsonData2['schedule'];
     }
 
     public function index()
@@ -43,8 +43,8 @@ class TicketController extends BaseController
         }
 
         $showTimeDetail = null;
-        foreach ($this->showTimeInfo as $showTime) {
-            if ($showTime['showTimeId'] == $data['showTime']) {
+        foreach ($this->scheduleInfo as $showTime) {
+            if ($showTime['scheduleID'] == $data['showTime']) {
                 $showTimeDetail = $showTime;
                 break;
             }
@@ -52,10 +52,10 @@ class TicketController extends BaseController
 
         foreach ($data['seats'] as $seat) {
             $this->ticketModel->insert([
-                'movieId' => $movieDetail['movieId'],
+                'movieId' => $movieDetail['movieID'],
                 'movieName' => $movieDetail['title'],
                 'date' => date('Y-m-d'),
-                'time' => $showTimeDetail['time'],
+                'time' => $showTimeDetail['showtime'],
                 'seats' => $seat,
                 'price' => $showTimeDetail['price'],
                 'paymentId' => $data['paymentId'],

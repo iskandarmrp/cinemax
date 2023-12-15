@@ -10,7 +10,7 @@ class Home extends BaseController
     protected $paymentModel;
     protected $ticketModel;
     protected $movieInfo;
-    protected $showTimeInfo;
+    protected $scheduleInfo;
 
     public function __construct()
     {
@@ -19,11 +19,11 @@ class Home extends BaseController
         $url = 'http://localhost:8081/movieAPI';
         $jsonString = file_get_contents($url);
         $jsonData = json_decode($jsonString, true);
-        $this->movieInfo = $jsonData['movies'];
-        $url2 = 'http://localhost:8081/showTimeAPI';
+        $this->movieInfo = $jsonData['movie'];
+        $url2 = 'http://localhost:8081/scheduleAPI';
         $jsonString2 = file_get_contents($url2);
         $jsonData2 = json_decode($jsonString2, true);
-        $this->showTimeInfo = $jsonData2['showtime'];
+        $this->scheduleInfo = $jsonData2['schedule'];
     }
 
     public function index($email)
@@ -47,13 +47,13 @@ class Home extends BaseController
                 break;
             }
         }
-        $showTimeDetail = [];
-        foreach ($this->showTimeInfo as $showTime) {
-            if ($showTime['movieId'] == $movieDetail['movieId']) {
-                array_push($showTimeDetail, $showTime);
+        $scheduleDetail = [];
+        foreach ($this->scheduleInfo as $schedule) {
+            if ($schedule['movieID'] == $movieDetail['movieID']) {
+                array_push($scheduleDetail, $schedule);
             }
         }
-        $data = ['title' => 'Detail Movie', 'movie' => $movieDetail, 'showtime' => $showTimeDetail, 'email' => $email];
+        $data = ['title' => 'Detail Movie', 'movie' => $movieDetail, 'schedule' => $scheduleDetail, 'email' => $email];
         return view('layout/header', $data) . view('movie_detail', $data) . view('layout/footer');
     }
 }

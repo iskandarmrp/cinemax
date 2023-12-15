@@ -28,8 +28,8 @@ class Ticket extends Migration
                 null => true,
             ],
             'time' => [
-                'type' => 'VARCHAR',
-                'constraint' => '255',
+                'type' => 'DATETIME',
+                null => true,
             ],
             'seats' => [
                 'type' => 'VARCHAR',
