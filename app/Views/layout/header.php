@@ -12,7 +12,7 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script> -->
     <div class="flex flex-col w-[20%] h-[100vh] bg-[#192553] text-white py-7 items-center fixed">
-        <h1 class="text-[30px] font-medium">Cinemax</h1>
+        <a href="/" class="text-[30px] font-medium">Cinemax</a>
         <div class="w-[12vw] h-[12vw] relative rounded-[15px] overflow-hidden">
             <img class="w-full h-full object-fill" src="/profile.svg" alt="Profile" />
         </div>

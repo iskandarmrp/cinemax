@@ -13,7 +13,7 @@
                 </div>
                 <div class="w-full h-[20vh] relative flex flex-col gap-2 px-5 py-2">
                     <p class="text-black font-semibold text-[17px]"><?= $t['movieName']; ?></p>
-                    <p class="text-[#192553] font-medium text-[15px]"><?= $t['time']; ?></p>
+                    <p class="text-[#192553] font-medium text-[15px]"><?= (new DateTime($t['time'], new DateTimeZone('UTC')))->format('d F Y (H:i)'); ?></p>
                     <p class="text-[#192553] font-medium text-[15px]">Seat: <?= $t['seats']; ?></p>
                     <p class="text-[#020127] font-semibold text-[18px]">Rp. <?= number_format($t['price'], 2); ?></p>
                 </div>

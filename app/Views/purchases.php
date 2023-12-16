@@ -4,14 +4,14 @@
         <?php foreach ($payment as $p) : ?>
             <a href="/purchase/<?= $p['paymentId']; ?>" class="w-full h-[25vh] flex flex-col relative overflow-hidden rounded-[15px] border-[1px] border-[#020127]">
                 <div class="w-full h-[5vh] relative bg-[#192553] flex flex-col justify-center">
-                    <p class="text-white font-semibold text-[17px] ml-5"><?= $p['paymentDate']; ?></p>
+                    <p class="text-white font-semibold text-[17px] ml-5"><?= (new DateTime($p['paymentDate'], new DateTimeZone('UTC')))->format('d F Y'); ?></p>
                 </div>
                 <div class="w-full h-[20vh] relative flex flex-row px-5 py-2 justify-between">
                     <div class="flex flex-col gap-0.5">
                         <p class="text-[#757687] font-medium text-[15px]">Order ID #<?= $p['paymentId']; ?></p>
                         <p class="text-black font-semibold text-[17px]"><?= $p['movieName']; ?></p>
                         <p class="text-[#192553] font-medium text-[15px]"><?= count(json_decode($p['seats'])); ?> Tickets: <?= implode(', ', json_decode($p['seats'])); ?></p>
-                        <p class="text-[#192553] font-medium text-[15px]"><?= $p['showtime']; ?></p>
+                        <p class="text-[#192553] font-medium text-[15px]"><?= (new DateTime($p['showtime'], new DateTimeZone('UTC')))->format('d F Y (H:i)'); ?></p>
                         <div class="flex flex-row">
                             <p class="text-[#228420] font-medium text-[16px]">Payment Confirmed</p>
                         </div>
