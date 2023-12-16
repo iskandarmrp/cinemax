@@ -38,7 +38,7 @@
     <form action="/purchase" method="post">
         <?= csrf_field(); ?>
         <div class="mt-2">
-            <select name="paymentMethod" class="form-control" id="paymentMethod">
+            <select name="paymentMethod" class="form-control block px-2 py-1 text-base text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" id="paymentMethod">
                 <option value="gopay">GoPay</option>
                 <option value="ovo">OVO</option>
                 <option value="bca">BCA</option>
