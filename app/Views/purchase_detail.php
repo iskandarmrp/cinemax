@@ -1,5 +1,5 @@
 <div class="w-full bg-white py-7 pl-[24vw] pr-[4vw] flex flex-col">
-    <a href="/purchases/<?= $email; ?>" class="text-[#192553] text-[30px] font-medium">Back</a>
+    <a href="/purchases" class="text-[#192553] text-[30px] font-medium">Back</a>
     <p class="text-[#192553] text-[30px] font-medium">Payment Detail</p>
     <div class="w-full bg-transparent flex flex-col gap-4 mt-3 mb-5">
         <?php foreach ($ticket as $t) : ?>

@@ -20,10 +20,10 @@
 
         <p class="mt-2 text-[18px]">Buyer</p>
 
-        <a href="/<?= $email; ?>" class="w-[80%] bg-[#ECEEFF] h-[8%] rounded-[15px] flex items-center justify-center mt-20">
+        <a href="/" class="w-[80%] bg-[#ECEEFF] h-[8%] rounded-[15px] flex items-center justify-center mt-20">
             <p class="text-[#020127] text-[21px]">Movies</p>
         </a>
-        <a href="/purchases/<?= $email; ?>" class="w-[80%] h-[8%] rounded-[15px] flex items-center justify-center mt-5">
+        <a href="/purchases" class="w-[80%] h-[8%] rounded-[15px] flex items-center justify-center mt-5">
             <p class="text-[21px] text-white">Purchases</p>
         </a>
         <a href="/logout" class="w-[80%] h-[8%] rounded-[15px] flex items-center justify-center absolute bottom-4">

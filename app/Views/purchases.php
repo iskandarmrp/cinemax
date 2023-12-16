@@ -2,7 +2,7 @@
     <p class="text-[#192553] text-[30px] font-medium">My Purchases</p>
     <div class="w-full bg-transparent flex flex-col gap-4 mt-3 mb-5">
         <?php foreach ($payment as $p) : ?>
-            <a href="/purchase/<?= $email; ?>/<?= $p['paymentId']; ?>" class="w-full h-[25vh] flex flex-col relative overflow-hidden rounded-[15px] border-[1px] border-[#020127]">
+            <a href="/purchase/<?= $p['paymentId']; ?>" class="w-full h-[25vh] flex flex-col relative overflow-hidden rounded-[15px] border-[1px] border-[#020127]">
                 <div class="w-full h-[5vh] relative bg-[#192553] flex flex-col justify-center">
                     <p class="text-white font-semibold text-[17px] ml-5"><?= $p['paymentDate']; ?></p>
                 </div>

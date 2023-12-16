@@ -26,18 +26,18 @@ class Home extends BaseController
         $this->scheduleInfo = $jsonData2['schedule'];
     }
 
-    public function index($email)
+    public function index()
     {
-        if ($email == '') {
+        if (session()->get('email') == '') {
             return redirect()->to('/login');
         }
-        $data = ['title' => 'Daftar Movie', 'movie' => $this->movieInfo, 'email' => $email];
+        $data = ['title' => 'Daftar Movie', 'movie' => $this->movieInfo, 'email' => session()->get('email')];
         return view('layout/header', $data) . view('home', $data) . view('layout/footer');
     }
 
-    public function detail($title, $email)
+    public function detail($title)
     {
-        if ($email == '') {
+        if (session()->get('email') == '') {
             return redirect()->to('/login');
         }
         $movieDetail = null;
@@ -53,7 +53,7 @@ class Home extends BaseController
                 array_push($scheduleDetail, $schedule);
             }
         }
-        $data = ['title' => 'Detail Movie', 'movie' => $movieDetail, 'schedule' => $scheduleDetail, 'email' => $email];
+        $data = ['title' => 'Detail Movie', 'movie' => $movieDetail, 'schedule' => $scheduleDetail, 'email' => session()->get('email')];
         return view('layout/header', $data) . view('movie_detail', $data) . view('layout/footer');
     }
 }
