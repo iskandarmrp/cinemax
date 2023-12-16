@@ -1,5 +1,9 @@
 <div class="w-full bg-white py-7 pl-[24vw] pr-[4vw] flex flex-col">
-    <a href="/purchases" class="text-[#192553] text-[30px] font-medium">Back</a>
+    <a href="/purchases" class="text-[#192553] text-[30px] font-medium mb-2">
+        <div class="w-[2.5vw] h-[2.5vw] relative rounded-[15px] overflow-hidden">
+            <img class="w-full h-full object-fill" src="/arrow_back.svg" alt="Arrow Back" />
+        </div>
+    </a>
     <p class="text-[#192553] text-[30px] font-medium">Payment Detail</p>
     <div class="w-full bg-transparent flex flex-col gap-4 mt-3 mb-5">
         <?php foreach ($ticket as $t) : ?>

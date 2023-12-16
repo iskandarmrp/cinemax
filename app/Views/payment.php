@@ -1,6 +1,10 @@
 <div class="w-full bg-white py-7 pl-[24vw] pr-[4vw] flex flex-col">
-    <a href="/detail/<?= $movie['title']; ?>" class="text-black text-[30px] font-medium">Back</a>
-    <h1 class="text-[#192553] text-[35px] font-medium">Order Summary</h1>
+    <a href="/detail/<?= $movie['title']; ?>" class="text-black text-[30px] font-medium mb-1">
+        <div class="w-[2.5vw] h-[2.5vw] relative rounded-[15px] overflow-hidden">
+            <img class="w-full h-full object-fill" src="/arrow_back.svg" alt="Arrow Back" />
+        </div>
+    </a>
+    <h1 class="text-[#192553] text-[35px] font-medium mb-5">Order Summary</h1>
     <div class="w-full h-[35vh] flex flex-row relative">
         <div class="w-[20%] h-full relative rounded-[15px] overflow-hidden">
             <img class="w-full h-full object-cover" src="/wonka.png" alt=<?= $movie['title']; ?> />
