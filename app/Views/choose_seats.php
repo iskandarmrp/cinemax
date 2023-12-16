@@ -32,7 +32,7 @@
                     <option value=<?= $s; ?>><?= $s; ?></option>
                 <?php endforeach; ?>
             </select> -->
-            <ul class="max-h-[150px] max-w-[25%] px-3 pb-3 overflow-y-auto text-sm text-gray-700 dark:text-gray-200 flex flex-wrap">
+            <ul class="max-h-[150px] max-w-[25%] bg-[#A9AABC] px-3 py-2 rounded-[25px] overflow-y-auto text-sm text-gray-700 dark:text-gray-200 flex flex-wrap">
                 <?php foreach ($seats as $s) : ?>
                     <li class="w-10 h-10 relative">
                         <div class="w-full h-full flex items-center rounded hover:bg-gray-100 dark:hover:bg-gray-600">

@@ -21,12 +21,33 @@
         <p class="mt-2 text-[18px]">Buyer</p>
 
         <a href="/" class="w-[80%] <?php echo $flow == 1 ? 'bg-[#ECEEFF]' : 'bg-transparent'; ?> h-[8%] rounded-[15px] flex items-center justify-center mt-20">
+            <?php if ($flow == 1) : ?>
+                <div class="w-[28%] h-[55%] relative rounded-[15px] overflow-hidden">
+                    <img class="w-full h-full object-fill" src="/movies_blue.svg" alt="movies_blue" />
+                </div>
+            <?php else : ?>
+                <div class="w-[28%] h-[55%] relative rounded-[15px] overflow-hidden">
+                    <img class="w-full h-full object-fill" src="/movies_white.svg" alt="movies_white" />
+                </div>
+            <?php endif; ?>
             <p class="<?php echo $flow == 1 ? 'text-[#020127]' : 'text-white'; ?> text-[21px]">Movies</p>
         </a>
         <a href="/purchases" class="w-[80%] <?php echo $flow == 2 ? 'bg-[#ECEEFF]' : 'bg-transparent'; ?> h-[8%] rounded-[15px] flex items-center justify-center mt-5">
+            <?php if ($flow == 2) : ?>
+                <div class="w-[28%] h-[55%] relative rounded-[15px] overflow-hidden">
+                    <img class="w-full h-full object-fill" src="/purchases_blue.svg" alt="purchases_blue" />
+                </div>
+            <?php else : ?>
+                <div class="w-[28%] h-[55%] relative rounded-[15px] overflow-hidden">
+                    <img class="w-full h-full object-fill" src="/purchases_white.svg" alt="purchases_white" />
+                </div>
+            <?php endif; ?>
             <p class="text-[21px] <?php echo $flow == 2 ? 'text-[#020127]' : 'text-white'; ?>">Purchases</p>
         </a>
-        <a href="/logout" class="w-[80%] h-[8%] rounded-[15px] flex items-center justify-center absolute bottom-4">
+        <a href="/logout" class="w-[80%] h-[8%] rounded-[15px] flex items-center justify-center absolute bottom-6">
+            <div class="w-[28%] h-[60%] relative rounded-[15px] overflow-hidden">
+                <img class="w-full h-full object-fill" src="/logout.svg" alt="logout" />
+            </div>
             <p class="text-[21px] text-[#E73434]">Logout</p>
         </a>
     </div>
