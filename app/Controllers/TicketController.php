@@ -62,7 +62,7 @@ class TicketController extends BaseController
             ]);
         }
 
-        $data = ['title' => 'success', 'email' => $data['email']];
+        $data = ['title' => 'success', 'email' => $data['email'], 'flow' => 0];
         return view('layout/header', $data) . view('success', $data) . view('layout/footer');
     }
 }

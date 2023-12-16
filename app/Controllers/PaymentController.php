@@ -48,7 +48,7 @@ class PaymentController extends BaseController
                 break;
             }
         }
-        $data = ['title' => 'payment', 'movie' => $movieDetail, 'showTime' => $showTimeDetail, 'seats' => $this->request->getVar('seats[]'), 'email' => $this->request->getVar('email'), 'count' => count($this->request->getVar('seats[]'))];
+        $data = ['title' => 'payment', 'movie' => $movieDetail, 'showTime' => $showTimeDetail, 'seats' => $this->request->getVar('seats[]'), 'email' => $this->request->getVar('email'), 'count' => count($this->request->getVar('seats[]')), 'flow' => 0];
         return view('layout/header', $data) . view('payment', $data) . view('layout/footer');
     }
 

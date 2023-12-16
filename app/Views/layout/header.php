@@ -20,11 +20,11 @@
 
         <p class="mt-2 text-[18px]">Buyer</p>
 
-        <a href="/" class="w-[80%] bg-[#ECEEFF] h-[8%] rounded-[15px] flex items-center justify-center mt-20">
-            <p class="text-[#020127] text-[21px]">Movies</p>
+        <a href="/" class="w-[80%] <?php echo $flow == 1 ? 'bg-[#ECEEFF]' : 'bg-transparent'; ?> h-[8%] rounded-[15px] flex items-center justify-center mt-20">
+            <p class="<?php echo $flow == 1 ? 'text-[#020127]' : 'text-white'; ?> text-[21px]">Movies</p>
         </a>
-        <a href="/purchases" class="w-[80%] h-[8%] rounded-[15px] flex items-center justify-center mt-5">
-            <p class="text-[21px] text-white">Purchases</p>
+        <a href="/purchases" class="w-[80%] <?php echo $flow == 2 ? 'bg-[#ECEEFF]' : 'bg-transparent'; ?> h-[8%] rounded-[15px] flex items-center justify-center mt-5">
+            <p class="text-[21px] <?php echo $flow == 2 ? 'text-[#020127]' : 'text-white'; ?>">Purchases</p>
         </a>
         <a href="/logout" class="w-[80%] h-[8%] rounded-[15px] flex items-center justify-center absolute bottom-4">
             <p class="text-[21px] text-[#E73434]">Logout</p>

@@ -31,7 +31,7 @@ class Home extends BaseController
         if (session()->get('email') == '') {
             return redirect()->to('/login');
         }
-        $data = ['title' => 'Daftar Movie', 'movie' => $this->movieInfo, 'email' => session()->get('email')];
+        $data = ['title' => 'Daftar Movie', 'movie' => $this->movieInfo, 'email' => session()->get('email'), 'flow' => 1];
         return view('layout/header', $data) . view('home', $data) . view('layout/footer');
     }
 
@@ -53,7 +53,7 @@ class Home extends BaseController
                 array_push($scheduleDetail, $schedule);
             }
         }
-        $data = ['title' => 'Detail Movie', 'movie' => $movieDetail, 'schedule' => $scheduleDetail, 'email' => session()->get('email')];
+        $data = ['title' => 'Detail Movie', 'movie' => $movieDetail, 'schedule' => $scheduleDetail, 'email' => session()->get('email'), 'flow' => 0];
         return view('layout/header', $data) . view('movie_detail', $data) . view('layout/footer');
     }
 }

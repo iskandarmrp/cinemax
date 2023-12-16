@@ -1,5 +1,5 @@
 <div class="w-full bg-white py-7 pl-[24vw] pr-[4vw] flex flex-col">
-    <a href="/detail/<?= $movie['title']; ?>/<?= $email; ?>" class="text-black text-[30px] font-medium">Back</a>
+    <a href="/detail/<?= $movie['title']; ?>" class="text-black text-[30px] font-medium">Back</a>
     <h1 class="text-[#192553] text-[35px] font-medium">Order Summary</h1>
     <div class="w-full h-[35vh] flex flex-row relative">
         <div class="w-[20%] h-full relative rounded-[15px] overflow-hidden">

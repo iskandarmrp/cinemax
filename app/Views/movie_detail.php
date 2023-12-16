@@ -1,5 +1,5 @@
 <div class="w-full bg-white py-7 pl-[24vw] pr-[4vw] flex flex-col">
-    <a href="/<?= $email; ?>" class="text-black text-[30px] font-medium">Back</a>
+    <a href="/" class="text-black text-[30px] font-medium">Back</a>
     <div class="w-full h-[50vh] flex flex-row relative">
         <div class="w-[30%] h-full relative rounded-[15px] overflow-hidden">
             <img class="w-full h-full object-cover" src="/wonka.png" alt=<?= $movie['title']; ?> />
