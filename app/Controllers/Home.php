@@ -56,4 +56,38 @@ class Home extends BaseController
         $data = ['title' => 'Detail Movie', 'movie' => $movieDetail, 'schedule' => $scheduleDetail, 'email' => session()->get('email'), 'flow' => 0];
         return view('layout/header', $data) . view('movie_detail', $data) . view('layout/footer');
     }
+
+    public function showSeats($title)
+    {
+        if (session()->get('email') == '') {
+            return redirect()->to('/login');
+        }
+        $movieDetail = null;
+        foreach ($this->movieInfo as $movie) {
+            if ($movie['title'] == $title) {
+                $movieDetail = $movie;
+                break;
+            }
+        }
+        $showTimeDetail = null;
+        foreach ($this->scheduleInfo as $schedule) {
+            if ($schedule['scheduleID'] == $this->request->getVar('showTime')) {
+                $showTimeDetail = $schedule;
+                break;
+            }
+        }
+        $showTimeSeats = json_decode($showTimeDetail['generated_seats']);
+        $showTimeSeats2 = json_decode($showTimeDetail['generated_seats']);
+        foreach ($showTimeSeats2 as $s) {
+            $existingTicket = $this->ticketModel->where('time', $showTimeDetail['showtime'])->where('movieName', $showTimeDetail['movieTitle'])->where('seats', $s)->first();
+            if ($existingTicket) {
+                $showTimeSeats = array_filter($showTimeSeats, function ($element) use ($s) {
+                    return $element != $s;
+                });
+            }
+        }
+
+        $data = ['title' => 'Detail Movie', 'movie' => $movieDetail, 'schedule' => $showTimeDetail, 'email' => session()->get('email'), 'flow' => 0, 'seats' => $showTimeSeats];
+        return view('layout/header', $data) . view('choose_seats', $data) . view('layout/footer');
+    }
 }

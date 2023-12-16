@@ -19,19 +19,21 @@
             <p class="text-[#192553] text-[18px]"><?= $movie['synopsis']; ?></p>
         </div>
     </div>
-    <p class="text-[#192553] text-[25px] font-semibold mt-5 mb-5">Choose Show Time</p>
-    <form action="/choose-seats/<?= $movie['title']; ?>" method="post">
+    <p class="text-[#192553] text-[25px] font-semibold mt-5 mb-5">Tickets on <?= $schedule['showtime']; ?></p>
+    <form action="/payment" method="post">
         <?= csrf_field(); ?>
+        <input type="hidden" name="title" value="<?= $movie['title']; ?>">
         <input type="hidden" name="email" value="<?= $email; ?>">
-        <div class="mb-3 flex justify-start gap-10">
-            <label for="showTime" class="form-label text-[#192553] text-[21px] font-medium">Show Time</label>
-            <select name="showTime" class="form-control" id="showTime">
-                <?php foreach ($schedule as $s) : ?>
-                    <option value=<?= $s['scheduleID']; ?>><?= $s['showtime']; ?></option>
+        <input type="hidden" name="showTime" value="<?= $schedule['scheduleID']; ?>">
+        <div class="mb-3 flex justify-start gap-7">
+            <label for="seats" class="form-label text-[#192553] text-[21px] font-medium">Seat Number</label>
+            <select name="seats[]" class="form-control" id="seats" multiple>
+                <?php foreach ($seats as $s) : ?>
+                    <option value=<?= $s; ?>><?= $s; ?></option>
                 <?php endforeach; ?>
             </select>
         </div>
-        <button type="submit" class="mt-8 w-[20%] h-[6vh] bg-[#192553] rounded-[15px] text-white text-[20px] font-medium justify-center items-center">Select Seats</button>
+        <button type="submit" class="mt-8 w-[20%] h-[6vh] bg-[#192553] rounded-[15px] text-white text-[20px] font-medium justify-center items-center">Buy Now</button>
     </form>
 </div>
 
