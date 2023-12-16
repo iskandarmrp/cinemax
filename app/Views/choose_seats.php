@@ -19,19 +19,29 @@
             <p class="text-[#192553] text-[18px]"><?= $movie['synopsis']; ?></p>
         </div>
     </div>
-    <p class="text-[#192553] text-[25px] font-semibold mt-5 mb-5">Tickets on <?= $schedule['showtime']; ?></p>
+    <p class="text-[#192553] text-[25px] font-semibold mt-5 mb-5">Tickets on <?= (new DateTime($schedule['showtime'], new DateTimeZone('UTC')))->format('d F Y (H:i)'); ?></p>
     <form action="/payment" method="post">
         <?= csrf_field(); ?>
         <input type="hidden" name="title" value="<?= $movie['title']; ?>">
         <input type="hidden" name="email" value="<?= $email; ?>">
         <input type="hidden" name="showTime" value="<?= $schedule['scheduleID']; ?>">
-        <div class="mb-3 flex justify-start gap-7">
+        <div class="flex justify-start gap-7">
             <label for="seats" class="form-label text-[#192553] text-[21px] font-medium">Seat Number</label>
-            <select name="seats[]" class="form-control" id="seats" multiple>
+            <!-- <select name="seats[]" class="form-control bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-[5%] p-1 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" id="seats" multiple>
                 <?php foreach ($seats as $s) : ?>
                     <option value=<?= $s; ?>><?= $s; ?></option>
                 <?php endforeach; ?>
-            </select>
+            </select> -->
+            <ul class="max-h-[150px] max-w-[25%] px-3 pb-3 overflow-y-auto text-sm text-gray-700 dark:text-gray-200 flex flex-wrap">
+                <?php foreach ($seats as $s) : ?>
+                    <li class="w-10 h-10 relative">
+                        <div class="w-full h-full flex items-center rounded hover:bg-gray-100 dark:hover:bg-gray-600">
+                            <input id="seats-<?= $s; ?>" name="seats[]" type="checkbox" value="<?= $s; ?>" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                            <label for="seats-<?= $s; ?>" class="w-full ml-1 text-sm font-medium text-gray-900 rounded dark:text-gray-300"><?= $s; ?></label>
+                        </div>
+                    </li>
+                <?php endforeach; ?>
+            </ul>
         </div>
         <button type="submit" class="mt-8 w-[20%] h-[6vh] bg-[#192553] rounded-[15px] text-white text-[20px] font-medium justify-center items-center">Buy Now</button>
     </form>

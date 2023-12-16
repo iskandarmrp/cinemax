@@ -11,8 +11,8 @@
             <div class="flex flex-row mt-5 mb-5">
                 <p class="text-[#192553] text-[20px]"><?= $movie['durationInMins']; ?> Minutes</p>
             </div>
-            <p class="text-[#192553] text-[20px] font-medium"><?= $showTime['showtime']; ?></p>
-            <p class="text-[#192553] text-[20px] font-medium mt-2"><?= $showTime['showtime']; ?></p>
+            <p class="text-[#192553] text-[20px] font-medium"><?= (new DateTime($showTime['showtime'], new DateTimeZone('UTC')))->format('d F Y'); ?></p>
+            <p class="text-[#192553] text-[20px] font-medium mt-2"><?= (new DateTime($showTime['showtime'], new DateTimeZone('UTC')))->format('H:i'); ?></p>
         </div>
     </div>
     <p class="text-[#192553] font-medium text-[30px] mt-2">Transaction Details</p>
