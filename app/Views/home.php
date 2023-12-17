@@ -4,7 +4,7 @@
         <?php foreach ($movie as $m) : ?>
             <a href="/detail/<?= $m['title']; ?>" class="w-[26%] h-[49vh] flex flex-col items-center relative">
                 <div class="w-full h-[86%] relative rounded-[15px] overflow-hidden">
-                    <img class="w-full h-full object-cover" src="/wonka.png" alt=<?= $m['title']; ?> />
+                    <img class="w-full h-full object-cover" src="/<?= $m['posterImg']; ?>" alt=<?= $m['title']; ?> />
                 </div>
                 <p class="text-[#192553] font-semibold text-[21px]"><?= $m['title']; ?></p>
                 <p class="text-[#757687] text-[17px]"><?= $m['genre']; ?></p>

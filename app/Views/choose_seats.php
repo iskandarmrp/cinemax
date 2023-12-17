@@ -6,7 +6,7 @@
     </a>
     <div class="w-full h-[50vh] flex flex-row relative">
         <div class="w-[30%] h-full relative rounded-[15px] overflow-hidden">
-            <img class="w-full h-full object-cover" src="/wonka.png" alt=<?= $movie['title']; ?> />
+            <img class="w-full h-full object-cover" src="/<?= $movie['posterImg']; ?>" alt=<?= $movie['title']; ?> />
         </div>
         <div class="w-[70%] h-full ml-5 flex flex-col">
             <h1 class="text-[#192553] text-[30px] font-semibold"><?= $movie['title']; ?></h1>

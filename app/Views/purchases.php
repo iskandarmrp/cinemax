@@ -12,8 +12,11 @@
                         <p class="text-black font-semibold text-[17px]"><?= $p['movieName']; ?></p>
                         <p class="text-[#192553] font-medium text-[15px]"><?= count(json_decode($p['seats'])); ?> Tickets: <?= implode(', ', json_decode($p['seats'])); ?></p>
                         <p class="text-[#192553] font-medium text-[15px]"><?= (new DateTime($p['showtime'], new DateTimeZone('UTC')))->format('d F Y (H:i)'); ?></p>
-                        <div class="flex flex-row">
-                            <p class="text-[#228420] font-medium text-[16px]">Payment Confirmed</p>
+                        <div class="flex flex-row items-center">
+                            <div class="w-[1.5vw] h-[1.5vw] relative rounded-[15px] overflow-hidden">
+                                <img class="w-full h-full object-fill" src="/success.svg" alt="Success" />
+                            </div>
+                            <p class="text-[#228420] font-medium text-[16px] ml-2">Payment Confirmed</p>
                         </div>
                     </div>
                     <div class="flex flex-row items-center">
