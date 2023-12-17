@@ -53,23 +53,7 @@ class PaymentController extends BaseController
 
         $totalPrice = $this->calculateTotalPrice($this->request->getVar('seats'), $showTimeDetail['price']);
 
-        $this->paymentModel->insert([
-            'paymentDate' => date('Y-m-d'),
-            'email' => $this->request->getVar('email'),
-            'totalPrice' => $totalPrice,
-            'paymentMethod' => $this->request->getVar('paymentMethod'),
-            'movieName' => $movieName,
-            'showtime' => $showTimeDetail['showtime'],
-            'seats' => json_encode(explode(', ', $this->request->getVar('seats'))),
-        ]);
-
-        return redirect()->to(base_url('/ticket/create'))->with('data', [
-            'title' => $this->request->getVar('title'),
-            'seats' => explode(', ', $this->request->getVar('seats')),
-            'showTime' => $this->request->getVar('showTime'),
-            'paymentId' => $this->paymentModel->insertID(),
-            'email' => $this->request->getVar('email'),
-        ]);
+        return $this->createPaymentAndTicket(date('Y-m-d H:i:s'), $this->request->getVar('email'), $totalPrice, $this->request->getVar('paymentMethod'), $movieName, $showTimeDetail['showtime'], $this->request->getVar('seats'), $this->request->getVar('title'), $this->request->getVar('showTime'));
     }
 
     public function getMovieDetailByTitle($title)
@@ -115,5 +99,26 @@ class PaymentController extends BaseController
             $totalPrice = $totalPrice + $price;
         }
         return $totalPrice;
+    }
+
+    public function createPaymentAndTicket($date, $email, $totalPrice, $paymentMethod, $movieName, $showTime, $seats, $title, $scheduleID)
+    {
+        $this->paymentModel->insert([
+            'paymentDate' => $date,
+            'email' => $email,
+            'totalPrice' => $totalPrice,
+            'paymentMethod' => $paymentMethod,
+            'movieName' => $movieName,
+            'showtime' => $showTime,
+            'seats' => json_encode(explode(', ', $seats)),
+        ]);
+
+        return redirect()->to(base_url('/ticket/create'))->with('data', [
+            'title' => $title,
+            'seats' => explode(', ', $seats),
+            'showTime' => $scheduleID,
+            'paymentId' => $this->paymentModel->insertID(),
+            'email' => $email,
+        ]);
     }
 }
