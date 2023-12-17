@@ -33,22 +33,10 @@ class TicketController extends BaseController
     public function create()
     {
         $data = session()->getFlashdata('data');
-        // $movie = $this->movieModel->where(['title' => $data['title']])->first();
-        $movieDetail = null;
-        foreach ($this->movieInfo as $movie) {
-            if ($movie['title'] == $data['title']) {
-                $movieDetail = $movie;
-                break;
-            }
-        }
 
-        $showTimeDetail = null;
-        foreach ($this->scheduleInfo as $showTime) {
-            if ($showTime['scheduleID'] == $data['showTime']) {
-                $showTimeDetail = $showTime;
-                break;
-            }
-        }
+        $movieDetail = $this->getMovieByTitle($data['title']);
+
+        $showTimeDetail = $this->getScheduleByID($data['showTime']);
 
         foreach ($data['seats'] as $seat) {
             $this->ticketModel->insert([
@@ -64,5 +52,29 @@ class TicketController extends BaseController
 
         $data = ['title' => 'success', 'email' => $data['email'], 'flow' => 0];
         return view('layout/header', $data) . view('success', $data) . view('layout/footer');
+    }
+
+    public function getMovieByTitle($title)
+    {
+        $movieDetail = null;
+        foreach ($this->movieInfo as $movie) {
+            if ($movie['title'] == $title) {
+                $movieDetail = $movie;
+                break;
+            }
+        }
+        return $movieDetail;
+    }
+
+    public function getScheduleByID($ID)
+    {
+        $showTimeDetail = null;
+        foreach ($this->scheduleInfo as $showTime) {
+            if ($showTime['scheduleID'] == $ID) {
+                $showTimeDetail = $showTime;
+                break;
+            }
+        }
+        return $showTimeDetail;
     }
 }

@@ -28,7 +28,7 @@ class PurchasesController extends BaseController
         $this->scheduleInfo = $jsonData2['schedule'];
     }
 
-    public function index()
+    public function showPurchases()
     {
         if (session()->get('email') == '') {
             return redirect()->to('/login');

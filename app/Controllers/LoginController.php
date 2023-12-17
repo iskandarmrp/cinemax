@@ -6,7 +6,7 @@ use App\Models\Login;
 
 class LoginController extends BaseController
 {
-    public function index()
+    public function login()
     {
         return view('login');
     }
