@@ -11,6 +11,7 @@ class Home extends BaseController
     protected $ticketModel;
     protected $movieInfo;
     protected $scheduleInfo;
+    protected $studioInfo;
 
     public function __construct()
     {
@@ -24,6 +25,10 @@ class Home extends BaseController
         $jsonString2 = file_get_contents($url2);
         $jsonData2 = json_decode($jsonString2, true);
         $this->scheduleInfo = $jsonData2['schedule'];
+        $url3 = 'http://localhost:8081/studioAPI';
+        $jsonString3 = file_get_contents($url3);
+        $jsonData3 = json_decode($jsonString3, true);
+        $this->studioInfo = $jsonData3['studio'];
     }
 
     public function home()
@@ -56,7 +61,9 @@ class Home extends BaseController
 
         $showTimeDetail = $this->getScheduleByID($this->request->getVar('showTime'));
 
-        $showTimeSeats = $this->getAvailableSeats($showTimeDetail);
+        $seats = $this->getSeatsByStudioID($showTimeDetail['studioID']);
+
+        $showTimeSeats = $this->getAvailableSeats($seats, $showTimeDetail['showtime'], $title);
 
         $data = ['title' => 'Detail Movie', 'movie' => $movieDetail, 'schedule' => $showTimeDetail, 'email' => session()->get('email'), 'flow' => 0, 'seats' => $showTimeSeats];
         return view('layout/header', $data) . view('choose_seats', $data) . view('layout/footer');
@@ -97,12 +104,12 @@ class Home extends BaseController
         return $showTimeDetail;
     }
 
-    public function getAvailableSeats($schedule)
+    public function getAvailableSeats($seats, $showtime, $title)
     {
-        $showTimeSeats = json_decode($schedule['generated_seats']);
-        $showTimeSeats2 = json_decode($schedule['generated_seats']);
+        $showTimeSeats = json_decode($seats);
+        $showTimeSeats2 = json_decode($seats);
         foreach ($showTimeSeats2 as $s) {
-            $existingTicket = $this->ticketModel->where('time', $schedule['showtime'])->where('movieName', $schedule['movieTitle'])->where('seats', $s)->first();
+            $existingTicket = $this->ticketModel->where('time', $showtime)->where('movieName', $title)->where('seats', $s)->first();
             if ($existingTicket) {
                 $showTimeSeats = array_filter($showTimeSeats, function ($element) use ($s) {
                     return $element != $s;
@@ -110,5 +117,17 @@ class Home extends BaseController
             }
         }
         return $showTimeSeats;
+    }
+
+    public function getSeatsByStudioID($ID)
+    {
+        $seats = null;
+        foreach ($this->studioInfo as $s) {
+            if ($s['studioID'] == $ID) {
+                $seats = $s['generated_seats'];
+                break;
+            }
+        }
+        return $seats;
     }
 }

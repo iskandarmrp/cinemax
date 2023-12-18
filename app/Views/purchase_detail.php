@@ -13,7 +13,7 @@
                 </div>
                 <div class="w-full h-[20vh] relative flex flex-col gap-2 px-5 py-2">
                     <p class="text-black font-semibold text-[17px]"><?= $t['movieName']; ?></p>
-                    <p class="text-[#192553] font-medium text-[15px]"><?= (new DateTime($t['time'], new DateTimeZone('UTC')))->format('d F Y (H:i)'); ?></p>
+                    <p class="text-[#192553] font-medium text-[15px]"><?= $studioName; ?>, <?= (new DateTime($t['time'], new DateTimeZone('UTC')))->format('d F Y (H:i)'); ?></p>
                     <p class="text-[#192553] font-medium text-[15px]">Seat: <?= $t['seats']; ?></p>
                     <p class="text-[#020127] font-semibold text-[18px]">Rp. <?= number_format($t['price'], 2); ?></p>
                 </div>
@@ -21,39 +21,6 @@
         <?php endforeach; ?>
     </div>
 </div>
-
-<!-- <div class="container">
-    <div class="row">
-        <div class="col">
-            <h1 class="mt-2">Daftar Purchases</h1>
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th scope="col">Title</th>
-                        <th scope="col">Date</th>
-                        <th scope="col">Time</th>
-                        <th scope="col">Seat</th>
-                        <th scope="col">Price</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php foreach ($ticket as $t) : ?>
-                        <tr>
-                            <td><?= $t['movieName']; ?></td>
-                            <td><?= $t['date']; ?></td>
-                            <td><?= $t['time']; ?></td>
-                            <td><?= $t['seats']; ?></td>
-                            <td><?= $t['price']; ?></td>
-                        </tr>
-                    <?php endforeach; ?>
-
-                </tbody>
-            </table>
-        </div>
-    </div>
-</div>
-<a href="/" class="btn btn-success">Back</a>
-<h1>Hello World</h1> -->
 
 </body>
 
