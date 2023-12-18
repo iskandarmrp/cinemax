@@ -18,7 +18,7 @@
             <p class="text-[#192553] text-[20px] font-semibold">Director</p>
             <p class="text-[#192553] text-[18px]"><?= $movie['director']; ?></p>
             <p class="text-[#192553] text-[20px] font-semibold mt-2">Cast</p>
-            <p class="text-[#192553] text-[18px]"><?= $movie['director']; ?></p>
+            <p class="text-[#192553] text-[18px]"><?= $movie['cast']; ?></p>
             <p class="text-[#192553] text-[20px] font-semibold mt-2">Synopsis</p>
             <p class="text-[#192553] text-[18px]"><?= $movie['synopsis']; ?></p>
         </div>

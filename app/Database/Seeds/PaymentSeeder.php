@@ -10,39 +10,16 @@ class PaymentSeeder extends Seeder
     {
         $data = [
             [
-                'paymentDate' => date('Y-m-d'),
-                'email'    => 'darth@theempire.com',
-                'totalPrice' => 120000,
+                'paymentDate' => date('Y-m-d H:i:s'),
+                'email'    => 'budi@gmail.com',
+                'totalPrice' => 300,
                 'paymentMethod' => 'ovo',
-                'movieName' => 'The Nun',
-                'showtime' => date('Y-m-d'),
-                'seats' => json_encode(['A1', 'A2', 'A3']),
+                'movieName' => 'Hamilton',
+                'showtime' => date('Y-m-d H:i:s', strtotime("2024-06-01 10:00:00")),
+                'seats' => json_encode(['A1', 'B1', 'C1']),
             ],
-            [
-                'paymentDate' => date('Y-m-d'),
-                'email'    => 'oke@gmail.com',
-                'totalPrice' => 17000,
-                'paymentMethod' => 'gopay',
-                'movieName' => 'The Nun',
-                'showtime' => date('Y-m-d'),
-                'seats' => json_encode(['A1', 'A2', 'A3']),
-            ],
-            [
-                'paymentDate' => date('Y-m-d'),
-                'email'    => 'jamesanderson@gmail.com',
-                'totalPrice' => 90000,
-                'paymentMethod' => 'DANA',
-                'movieName' => 'The Nun',
-                'showtime' => date('Y-m-d'),
-                'seats' => json_encode(['A1', 'A2', 'A3']),
-            ],
-
         ];
 
-        // Simple Queries
-        // $this->db->query('INSERT INTO users (username, email) VALUES(:username:, :email:)', $data);
-
-        // Using Query Builder
         $this->db->table('payment')->insertBatch($data);
     }
 }

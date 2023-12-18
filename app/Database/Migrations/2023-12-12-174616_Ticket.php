@@ -42,9 +42,11 @@ class Ticket extends Migration
             'paymentId' => [
                 'type' => 'INT',
                 'constraint' => 11,
+                'unsigned'       => true,
             ]
         ]);
         $this->forge->addKey('ticketId', true);
+        $this->forge->addForeignKey('paymentId', 'payment', 'paymentId', 'CASCADE', 'CASCADE');
         $this->forge->createTable('ticket');
     }
 

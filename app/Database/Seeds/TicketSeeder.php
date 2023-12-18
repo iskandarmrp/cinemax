@@ -11,37 +11,33 @@ class TicketSeeder extends Seeder
         $data = [
             [
                 'movieId' => 1,
-                'movieName'    => 'The Nun',
-                'date' => date('Y-m-d'),
-                'time' => date('Y-m-d'),
+                'movieName'    => 'Hamilton',
+                'date' => date('Y-m-d H:i:s'),
+                'time' => date('Y-m-d H:i:s', strtotime("2024-06-01 10:00:00")),
                 'seats' => 'A1',
-                'price' => 12000,
+                'price' => 100,
                 'paymentId' => 1,
             ],
             [
-                'movieId' => 2,
-                'movieName'    => 'The Amazing Spiderman',
-                'date' => date('Y-m-d'),
-                'time' => date('Y-m-d'),
-                'seats' => 'A2',
-                'price' => 145000,
-                'paymentId' => 2,
+                'movieId' => 1,
+                'movieName'    => 'Hamilton',
+                'date' => date('Y-m-d H:i:s'),
+                'time' => date('Y-m-d H:i:s', strtotime("2024-06-01 10:00:00")),
+                'seats' => 'B1',
+                'price' => 100,
+                'paymentId' => 1,
             ],
             [
                 'movieId' => 1,
-                'movieName'    => 'The Nun',
-                'date' => date('Y-m-d'),
-                'time' => date('Y-m-d'),
-                'seats' => 'A3',
-                'price' => 15000,
-                'paymentId' => 3,
+                'movieName'    => 'Hamilton',
+                'date' => date('Y-m-d H:i:s'),
+                'time' => date('Y-m-d H:i:s', strtotime("2024-06-01 10:00:00")),
+                'seats' => 'C1',
+                'price' => 100,
+                'paymentId' => 1,
             ],
         ];
 
-        // Simple Queries
-        // $this->db->query('INSERT INTO users (username, email) VALUES(:username:, :email:)', $data);
-
-        // Using Query Builder
         $this->db->table('ticket')->insertBatch($data);
     }
 }

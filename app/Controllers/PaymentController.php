@@ -18,11 +18,11 @@ class PaymentController extends BaseController
     {
         $this->paymentModel = new PaymentModel();
         $this->ticketModel = new TicketModel();
-        $url = 'http://localhost:8081/movieAPI';
+        $url = 'http://localhost:8081/movieAPI/josua.sinabutar@gmail.com/password';
         $jsonString = file_get_contents($url);
         $jsonData = json_decode($jsonString, true);
         $this->movieInfo = $jsonData['movie'];
-        $url2 = 'http://localhost:8081/scheduleAPI';
+        $url2 = 'http://localhost:8081/scheduleAPI/josua.sinabutar@gmail.com/password';
         $jsonString2 = file_get_contents($url2);
         $jsonData2 = json_decode($jsonString2, true);
         $this->scheduleInfo = $jsonData2['schedule'];
