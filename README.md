@@ -1,6 +1,10 @@
-# Panduan Penggunaan Sistem Cinemax dan Bioskop TST
+# Sistem Pembelian Tiket dan Manajemen Data Terintegrasi Cinemax
 
-Ini adalah panduan untuk menggunakan sistem Cinemax dan Bioskop TST, dua sistem yang berbeda tetapi terkait.
+Kedua sistem ini terintegrasi dengan saling mengakses layanan _core_ dari masing-masing domain sistem. Sistem manajemen data memberikan data film, studio, harga, dan jadwal penayangan yang tersedia bagi bioskop. Data ini diakses oleh sistem pembelian tiket dan ditampilkan bagi pengguna. Pengguna akan membeli tiket dengan jadwal tertentu dan daftar transaksi yang terjadi diakses kembali oleh sistem manajemen data untuk ditampilkan bagi admin.
+
+# Panduan Penggunaan Sistem Pembelian Tiket dan Manajemen Data Cinemax
+
+Ini adalah panduan untuk menggunakan Sistem Pembelian Tiket dan Manajemen Data Cinemax, dua domain yang berbeda dan terintegrasi.
 
 ## Persiapan Awal
 
@@ -9,9 +13,9 @@ Sebelum memulai, pastikan Anda telah memenuhi persyaratan berikut:
 - **Composer**: Pastikan Anda telah mengunduh Composer jika belum.
   [Unduh Composer di sini](https://getcomposer.org/doc/00-intro.md)
 
-- **Database**: Siapkan database MySQL dengan nama gotix untuk Cinemax dan bioskop untuk Bioskop TST.
+- **Database**: Siapkan database MySQL dengan nama gotix untuk Sistem Pembelian Tiket dan bioskop untuk Manajemen Data.
 
-## Instalasi dan Penggunaan Sistem Cinemax
+## Instalasi dan Penggunaan Sistem Pembelian Tiket
 
 1. Unduh atau clone repositori Cinemax.
 2. Buka terminal/command prompt dan arahkan ke direktori Cinemax.
@@ -22,7 +26,7 @@ Sebelum memulai, pastikan Anda telah memenuhi persyaratan berikut:
 7. Gunakan perintah php spark db:seed UsersSeeder untuk menambahkan pengguna.
 8. Jalankan sistem dengan perintah `php spark serve`.
 
-## Instalasi dan Penggunaan Sistem Bioskop TST
+## Instalasi dan Penggunaan Sistem Manajemen Data
 
 1. Unduh atau clone repositori Bioskop TST.
 2. Buka terminal/command prompt dan arahkan ke direktori Bioskop TST.
